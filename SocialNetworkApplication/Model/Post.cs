@@ -20,5 +20,10 @@ namespace SocialNetworkApplication.Model
         [BsonElement("CreationTime")]
         public DateTime CreationTime { get; set; }
         
+
+       
+
+       
+
     }
 }
