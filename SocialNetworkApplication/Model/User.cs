@@ -21,8 +21,5 @@ namespace SocialNetworkApplication.Model
 
         [BsonElement("Age")]
         public int Age { get; set; }
-        
-        public List<string> Followers { get; set; }
-        public List<string> Followings { get; set; }
     }
 }

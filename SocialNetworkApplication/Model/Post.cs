@@ -19,11 +19,5 @@ namespace SocialNetworkApplication.Model
         public string TextContent { get; set; }
         [BsonElement("CreationTime")]
         public DateTime CreationTime { get; set; }
-        
-
-       
-
-       
-
     }
 }
