@@ -9,15 +9,20 @@ namespace SocialNetworkApplication.Model
 {
     public class Post
     {
-        // Core Attributes
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+        // Core Attributes
         [BsonElement("ImageContent")]
         public string ImageContent { get; set; }
+
         [BsonElement("TextContent")]
         public string TextContent { get; set; }
+
         [BsonElement("CreationTime")]
         public DateTime CreationTime { get; set; }
+
+        [BsonElement("Comments")]
+        public List<string> Comments { get; set; }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetworkApplication.Model
+namespace SocialNetworkApplication.Controller
 {
-    public class EntityId
+    public class PostController
     {
     }
 }
