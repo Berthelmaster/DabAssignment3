@@ -8,10 +8,10 @@ using SocialNetworkApplication.Services;
 
 namespace SocialNetworkApplication.Controller
 {
+    [Route("API/[controller]")]
+    [ApiController]
     public class CircleController
     {
-
-
         private readonly CircleService _circleService;
 
         public CircleController(CircleService circleService)
@@ -26,7 +26,21 @@ namespace SocialNetworkApplication.Controller
         }
 
         [HttpGet("{id:length(24)}", Name = "getName")]
-        public ActionResult<Circle> Get
+        public ActionResult<Circle> Get(string Id)
+        {
+            var circle = _circleService.Get(Id);
+            if(circle==null)
+            {
+                return NotFound();
+            }
+            return circle;
+        }
+
+        [HttpPost]
+        public ActionResult<Circle> Create(Circle circle)
+        {
+
+        }
 
 
     }
