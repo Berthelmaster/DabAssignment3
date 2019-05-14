@@ -18,7 +18,7 @@ namespace SocialNetworkApplication
             services.AddScoped<Services.UserService>();
             services.AddScoped<Services.PostService>();
             services.AddScoped<Services.FeedService>();
-            services.AddScoped<Services.CircleService>();
+            services.AddScoped<Services.CircleService>(); 
             services.AddScoped<Services.BlockListService>();
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
         }
