@@ -24,6 +24,31 @@ namespace SocialNetworkApplication.Services
             return await _feeds.Find<Feed>(a => a.Id.Equals(id)).FirstOrDefaultAsync();
         }
 
+        public List<Feed> Get()
+        {
+            return _feeds.Find(Feed => true).ToList();
+        }
+
+        public Feed Create(Feed feed)
+        {
+            _feeds.InsertOne(feed);
+            return feed;
+        }
+
+        public void Remove(Feed feed)
+        {
+            _feeds.DeleteOne(f => f.Id == feed.Id);
+        }
+
+        public void Remove(string id)
+        {
+            _feeds.DeleteOne(feed => feed.Id.Equals(id));
+        }
+
+        public void Update(string id, Feed feed)
+        {
+            _feeds.ReplaceOne(f => f.Id.Equals(id), feed);
+        }
 
     }
 }
