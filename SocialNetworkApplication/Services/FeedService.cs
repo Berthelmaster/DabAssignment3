@@ -21,7 +21,9 @@ namespace SocialNetworkApplication.Services
 
         public async Task<Feed> Get(string id)
         {
-            return await _feeds.FindAsync<Feed>(abc => abc.Users.Id == id).
+            return await _feeds.Find<Feed>(a => a.Id.Equals(id)).FirstOrDefaultAsync();
         }
+
+
     }
 }
