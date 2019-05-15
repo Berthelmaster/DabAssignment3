@@ -15,8 +15,11 @@ namespace SocialNetworkApplication.Model
 
 
 
+        [BsonElement("Posts")]
+        public List<string> Posts { get; set; }
 
+        [BsonElement("Users")]
         //Relations?
-        public List<User> Users { get; set; }
+        public List<string> Users { get; set; }
     }
 }

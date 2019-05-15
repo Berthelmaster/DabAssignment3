@@ -13,9 +13,9 @@ namespace SocialNetworkApplication.Model
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         [BsonElement("Users")]
-        public List<User> Users { get; set; }
-        [BsonElement("Circle")]
-        public List <Circle> Circles { get; set; }
+        public List<string> Users { get; set; }
+        [BsonElement("Circles")]
+        public List<string> Circles { get; set; }
         
     }
 }

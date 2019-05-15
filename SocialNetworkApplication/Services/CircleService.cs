@@ -19,9 +19,9 @@ namespace SocialNetworkApplication.Services
 
         }
 
-        public async Task<Circle> Get(string id)
+        public Circle Get(string id)
         {
-            return await _circles.Find<Circle>(c => c.Id.Equals(id)).FirstOrDefaultAsync();
+            return _circles.Find<Circle>(c => c.Id.Equals(id)).FirstOrDefault();
         }
 
         public List<Circle> Get()

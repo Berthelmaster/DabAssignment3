@@ -8,25 +8,25 @@ using SocialNetworkApplication.Services;
 
 namespace SocialNetworkApplication.Controller
 {
-    public class UserController : ControllerBase
+    public class CommentController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly CommentService _commentService;
 
-        public UserController(UserService userService)
+        public CommentController(CommentService commentService)
         {
-            _userService = userService;
+            _commentService = commentService;
         }
 
         [HttpGet]
-        public ActionResult<List<User>> Get()
+        public ActionResult<List<Comment>> Get()
         {
-            return _userService.Get();
+            return _commentService.Get();
         }
 
-        [HttpGet("{id:length(24)}", Name = "GetUser")]
-        public ActionResult<User> Get(string Id)
+        [HttpGet("{id:length(24)}", Name = "GetComment")]
+        public ActionResult<Comment> Get(string Id)
         {
-            var circle = _userService.Get(Id);
+            var circle = _commentService.Get(Id);
 
             if (circle == null)
             {
@@ -37,38 +37,38 @@ namespace SocialNetworkApplication.Controller
         }
 
         [HttpPost]
-        public ActionResult<User> Create(User circle)
+        public ActionResult<Comment> Create(Comment circle)
         {
-            _userService.Create(circle);
+            _commentService.Create(circle);
 
-            return CreatedAtRoute("GetUser", new { Id = circle.Id.ToString() }, circle);
+            return CreatedAtRoute("GetComment", new { Id = circle.Id.ToString() }, circle);
         }
 
         [HttpPut("{Id:length(24)}")]
-        public IActionResult Update(string Id, User circleIn)
+        public IActionResult Update(string Id, Comment circleIn)
         {
-            var circle = _userService.Get(Id);
+            var circle = _commentService.Get(Id);
 
             if (circle == null)
             {
                 return NotFound();
             }
 
-            _userService.Update(Id, circleIn);
+            _commentService.Update(Id, circleIn);
             return NoContent();
         }
 
         [HttpDelete("{Id:length(24)}")]
         public IActionResult Delete(string Id)
         {
-            var circle = _userService.Get(Id);
+            var circle = _commentService.Get(Id);
 
             if (circle == null)
             {
                 return NotFound();
             }
 
-            _userService.Remove(circle.Id);
+            _commentService.Remove(circle.Id);
 
             return NoContent();
         }

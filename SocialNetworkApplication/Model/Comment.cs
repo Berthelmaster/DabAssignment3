@@ -7,29 +7,19 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace SocialNetworkApplication.Model
 {
-    public class Post
+    public class Comment
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        [BsonElement("Circle")]
-        public string Circle { get; set; }
-
-        // Core Attributes
-        [BsonElement("ImageContent")]
-        public string ImageContent { get; set; }
-
-        [BsonElement("TextContent")]
-        public string TextContent { get; set; }
-
         [BsonElement("Author")]
         public string Author { get; set; }
 
+        [BsonElement("Text")]
+        public string Text { get; set; }
+
         [BsonElement("CreationTime")]
         public DateTime CreationTime { get; set; }
-
-        [BsonElement("Comments")]
-        public List<ObjectId> Comments { get; set; }
     }
 }

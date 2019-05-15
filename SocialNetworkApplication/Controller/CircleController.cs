@@ -8,7 +8,7 @@ namespace SocialNetworkApplication.Controller
 {
     [Route("API/[controller]")]
     [ApiController]
-    public class CircleController
+    public class CircleController : ControllerBase
     {
         private readonly CircleService _circleService;
 
@@ -23,14 +23,16 @@ namespace SocialNetworkApplication.Controller
             return _circleService.Get();
         }
 
-        [HttpGet("{id:length(24)}", Name = "getName")]
+        [HttpGet("{id:length(24)}", Name = "GetCircle")]
         public ActionResult<Circle> Get(string Id)
         {
             var circle = _circleService.Get(Id);
-            if(circle==null)
+
+            if(circle == null)
             {
                 return NotFound();
             }
+
             return circle;
         }
 
@@ -43,7 +45,7 @@ namespace SocialNetworkApplication.Controller
         }
 
         [HttpPut("{Id:length(24)}")]
-        public IActionResult Update(string Id, Circle circlein)
+        public IActionResult Update(string Id, Circle circleIn)
         {
             var circle = _circleService.Get(Id);
 
@@ -51,9 +53,11 @@ namespace SocialNetworkApplication.Controller
             {
                 return NotFound();
             }
-            _circleService.Update(Id, circlein);
+
+            _circleService.Update(Id, circleIn);
             return NoContent();
         }
+
         [HttpDelete("{Id:length(24)}")]
         public IActionResult Delete(string Id)
         {
@@ -63,10 +67,10 @@ namespace SocialNetworkApplication.Controller
             {
                 return NotFound();
             }
+
             _circleService.Remove(circle.Id);
+
             return NoContent();
         }
-
-
     }
 }

@@ -24,10 +24,17 @@ namespace SocialNetworkApplication.Model
         [BsonElement("BlockedList")]
         public List<string> BlockedList { get; set; }
 
+        [BsonElement("Followers")]
+        public List<string> Follows { get; set; }
 
+        [BsonElement("Following")]
+        public List<string> Followings { get; set; }
 
         //Relations?
+        [BsonElement("Circles")]
+        public List<string> Circles{ get; set; }
 
-        public List<Circle> Circles{ get; set; }
+        [BsonElement("Feed")]
+        public ObjectId Feed { get; set; }
     }
 }
