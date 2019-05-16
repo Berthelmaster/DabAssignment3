@@ -11,10 +11,12 @@ namespace SocialNetworkApplication.Controller
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
+        private readonly CircleService _circleService;
 
-        public UserController(UserService userService)
+        public UserController(UserService userService, CircleService circleService)
         {
             _userService = userService;
+            _circleService = circleService;
         }
 
         [HttpGet]

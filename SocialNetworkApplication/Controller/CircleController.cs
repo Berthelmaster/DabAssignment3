@@ -11,6 +11,13 @@ namespace SocialNetworkApplication.Controller
     public class CircleController : ControllerBase
     {
         private readonly CircleService _circleService;
+        private readonly User _userService;
+        private readonly Post _postService;
+
+        public UserController(User user, Post post)
+        { 
+
+        }
 
         public CircleController(CircleService circleService)
         {
