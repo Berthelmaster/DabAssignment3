@@ -12,10 +12,10 @@ namespace SocialNetworkApplication.Controller
     {
         private readonly UserService _userService;
         private readonly CircleService _circleService;
-        private readonly PostService _postService;
+        //private readonly PostService _postService;
         
 
-        public UserController(UserService userService, CircleService circleService, PostService postService)
+        public UserController(UserService userService, CircleService circleService)
         {
             _userService = userService;
             _circleService = circleService;
@@ -78,24 +78,24 @@ namespace SocialNetworkApplication.Controller
             return CreatedAtRoute("GetCircle", new { Id = circle.Id.ToString() }, circle);
         }
 
-        [HttpPut("{Id:length(24)}")]
-        public IActionResult CreatePublicPost(string userId, Post post)
-        {
-            var u = _userService.Get(userId);
+        //[HttpPut("{Id:length(24)}")]
+        //public IActionResult CreatePublicPost(string userId, Post post)
+        //{
+        //    var u = _userService.Get(userId);
 
-            if (u == null)
-            {
-                return NotFound();
-            }
+        //    if (u == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            post.Author = userId;
+        //    post.Author = userId;
 
-            u.Posts.Add(post);
+        //    u.Posts.Add(post);
 
-            _userService.Update(userId, u);
+        //    _userService.Update(userId, u);
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         
 

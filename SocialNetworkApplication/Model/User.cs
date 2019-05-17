@@ -34,8 +34,8 @@ namespace SocialNetworkApplication.Model
         [BsonElement("Circles")]
         public List<string> Circles{ get; set; }
 
-        [BsonElement("Posts")]
-        public List<Post> Posts{ get; set; }
+        //[BsonElement("Posts")]
+        //public List<Post> Posts{ get; set; }
 
         //[BsonElement("Feed")]
         //public ObjectId Feed { get; set; }
