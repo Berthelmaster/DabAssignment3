@@ -6,17 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 using SocialNetworkApplication.Model;
 using SocialNetworkApplication.Services;
 
-namespace SocialNetworkApplication.Controller
+namespace SocialNetworkApplication
 {
     public class PostController : ControllerBase
     {
         private readonly PostService _postService;
-        private readonly Comment _comment;
-        public PostController(PostService postService, Comment comment)
+        private readonly CommentService _commentService;
+
+        public PostController(PostService postService, CommentService commentService)
         {
             _postService = postService;
-            _comment = comment;
+            _commentService = commentService;
         }
+
+        public PostController()
+        {
+            _postService = new PostService();
+            _commentService = new CommentService();
+        }
+
 
         [HttpGet]
         public ActionResult<List<Post>> Get()
@@ -38,11 +46,37 @@ namespace SocialNetworkApplication.Controller
         }
 
         [HttpPost]
-        public ActionResult<Post> Create(Post circle)
+        public ActionResult<Post> Create(Post post)
         {
-            _postService.Create(circle);
+            _postService.Create(post);
 
-            return CreatedAtRoute("GetPost", new { Id = circle.Id.ToString() }, circle);
+            return CreatedAtRoute("GetPost", new { Id = post.Id.ToString() }, post);
+        }
+
+        [HttpPut("{Id:length(24)}")]
+        public IActionResult CreateComment(Post post, Comment comment)
+        {
+            var c = _commentService.Get(comment.Id);
+
+            if (c == null)
+            {
+                return NotFound();
+            }
+
+            var p = _postService.Get(post.Id);
+
+            if (p == null)
+            {
+                return NotFound();
+            }
+
+            post.Comments.Add(comment);
+
+            _commentService.Create(comment);
+
+            _postService.Update(post.Id, post);
+
+            return NoContent();
         }
 
         [HttpPut("{Id:length(24)}")]

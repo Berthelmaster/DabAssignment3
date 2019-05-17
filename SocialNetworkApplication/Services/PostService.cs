@@ -29,7 +29,7 @@ namespace SocialNetworkApplication.Services
             return _posts.Find<Post>(Post => Post.Id.Equals(id)).FirstOrDefault();
         }
 
-        public Post Create(Post post, string privacy)
+        public Post Create(Post post)
         {
             _posts.InsertOne(post);
             return post;

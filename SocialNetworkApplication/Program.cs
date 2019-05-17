@@ -31,11 +31,17 @@ namespace SocialNetworkApplication
                 switch (choice)
                 {
                     case "1":
-                        Command.ShowFeed();
+                        Console.WriteLine("Write UserId");
+                        var LoggedInUserID = Console.ReadLine();
+                        Command.ShowFeed(LoggedInUserID);
                         break;
 
                     case "2":
-                        Command.ShowWall();
+                        Console.WriteLine("Write UserID");
+                        var UserID = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Write GuestID");
+                        var GuestID = Convert.ToInt32(Console.ReadLine());
+                        Command.ShowWall(UserID, GuestID);
                         break;
 
                     case "3":

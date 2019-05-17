@@ -12,12 +12,19 @@ namespace SocialNetworkApplication.Controller
     {
         private readonly UserService _userService;
         private readonly CircleService _circleService;
+        private readonly PostService _postService;
         
 
-        public UserController(UserService userService, CircleService circleService)
+        public UserController(UserService userService, CircleService circleService, PostService postService)
         {
             _userService = userService;
             _circleService = circleService;
+        }
+
+        public UserController()
+        {
+            _userService = new UserService();
+            _circleService = new CircleService();
         }
 
         [HttpGet]
@@ -40,12 +47,57 @@ namespace SocialNetworkApplication.Controller
         }
 
         [HttpPost]
-        public ActionResult<User> Create(User circle)
+        public ActionResult<User> Create(User user)
         {
-            _userService.Create(circle);
+            _userService.Create(user);
 
-            return CreatedAtRoute("GetUser", new { Id = circle.Id.ToString() }, circle);
+            return CreatedAtRoute("GetUser", new { Id = user.Id.ToString() }, user);
         }
+
+        [HttpPost]
+        public ActionResult<Circle> CreateCircle(Circle circle, string userId)
+        {
+            var c = _circleService.Get(circle.Id);
+
+            if (c == null)
+            {
+                return NotFound();
+            }
+
+            var u = _userService.Get(userId);
+
+            // Maybe name
+            u.Circles.Add(circle.Id);
+
+            circle.Users.Add(userId);
+
+            _circleService.Create(circle);
+
+            _userService.Update(userId, u);
+
+            return CreatedAtRoute("GetCircle", new { Id = circle.Id.ToString() }, circle);
+        }
+
+        [HttpPut("{Id:length(24)}")]
+        public IActionResult CreatePublicPost(string userId, Post post)
+        {
+            var u = _userService.Get(userId);
+
+            if (u == null)
+            {
+                return NotFound();
+            }
+
+            post.Author = userId;
+
+            u.Posts.Add(post);
+
+            _userService.Update(userId, u);
+
+            return NoContent();
+        }
+
+        
 
         [HttpPut("{Id:length(24)}")]
         public IActionResult Update(string Id, User circleIn)

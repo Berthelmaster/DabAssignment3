@@ -22,6 +22,13 @@ namespace SocialNetworkApplication.Controller
             _postService = postService;
         }
 
+        public CircleController()
+        {
+            _postService = new PostService();
+            _userService = new UserService();
+            _circleService = new CircleService();
+        }
+
         [HttpGet]
         public ActionResult<List<Circle>> Get()
         {
@@ -42,20 +49,63 @@ namespace SocialNetworkApplication.Controller
         }
 
         [HttpPost]
-        public ActionResult<Circle> Create(Circle circle, string userId)
+        public ActionResult<Circle> Create(Circle circle)
         {
-            var user = _userService.Get(userId);
+            _circleService.Create(circle);
+            
+            return CreatedAtRoute("GetCircle", new {Id=circle.Id.ToString()}, circle);
+        }
 
-            if(user == null)
+        [HttpPut("{Id:length(24)}")]
+        public IActionResult CreatePost(Circle circle, Post post)
+        {
+            var p = _postService.Get(post.Id);
+
+            if (p == null)
+            {
+                return NotFound();
+            }
+
+            var c = _circleService.Get(circle.Id);
+
+            if(c == null)
+            {
+                return NotFound();
+            }
+
+            post.Circle = circle;
+
+            circle.Posts.Add(post);
+
+            _circleService.Update(circle.Id, circle);
+
+            _postService.Update(post.Id, post);
+
+            return NoContent();
+        }
+
+        [HttpPut("{Id:length(24)}")]
+        public IActionResult AddUser(Circle circle, string userId)
+        {
+            var u = _userService.Get(userId);
+
+            if (u == null)
+            {
+                return NotFound();
+            }
+
+            var c = _circleService.Get(circle.Id);
+
+            if (c == null)
             {
                 return NotFound();
             }
 
             circle.Users.Add(userId);
 
-            _circleService.Create(circle);
-            
-            return CreatedAtRoute("GetCircle", new {Id=circle.Id.ToString()}, circle);
+            _circleService.Update(circle.Id, circle);
+
+            return NoContent();
         }
 
         [HttpPut("{Id:length(24)}")]

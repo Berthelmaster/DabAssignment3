@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using SocialNetworkApplication.Model;
 using SocialNetworkApplication.Services;
 
-namespace SocialNetworkApplication.Controller
+namespace SocialNetworkApplication
 {
     public class FeedController : ControllerBase
     {
@@ -19,6 +19,13 @@ namespace SocialNetworkApplication.Controller
             _feedService = feedService;
             _userService = userService;
             _circleService = circleService;
+        }
+
+        public FeedController()
+        {
+            _feedService = new FeedService();
+            _userService = new UserService();
+            _circleService = new CircleService();
         }
 
         [HttpGet]
