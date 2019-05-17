@@ -19,7 +19,9 @@ namespace SocialNetworkApplication
         private readonly PostController _postController;
         private readonly CircleController _circleController;
         private readonly CommentController _commentController;
-        
+        private readonly string dateTimeFormat = "MM/dd/yyyy";
+
+
         public Command()
         {
             _userController = new UserController();
@@ -32,27 +34,17 @@ namespace SocialNetworkApplication
         {
             Console.WriteLine($"Finding user with id {UserID}");
             var userCircles =_circleController.Get().Value.FindAll(c => c.Users.Contains(UserID)).ToList();
-            var allUserPosts = _postController.Get().Value.FindAll(p => p.Author.Equals(UserID));
-            foreach (var VARIABLE in userCircles.)
+
+            // Plausible , not sure about this one
+            var allUserPosts = _postController.Get().Value.FindAll(p => p.Author.Equals(UserID) || userCircles.Contains(p.Circle));
+
+            foreach(var post in allUserPosts)
             {
-                
+                Console.WriteLine(post.Author);
+                Console.WriteLine(post.CreationTime.ToString(dateTimeFormat));
+                Console.WriteLine(post.TextContent);
+                Console.WriteLine();
             }
-            var feed = from 
-
-
-
-            var UserObj = new UserService();
-
-            Console.WriteLine($"{UserObj.Get(UserID)}");
-
-            if (UserObj.Get(UserID) == null)
-            {
-                Console.WriteLine($"User with ID {UserID} not found try again");
-            }
-            else
-            {
-                Console.WriteLine("All current feeds");
-            }           
             
         }
 
@@ -73,7 +65,7 @@ namespace SocialNetworkApplication
             foreach (var userPost in userPosts)
             {
                 Console.WriteLine(userPost.Author);
-                Console.WriteLine(userPost.CreationTime);
+                Console.WriteLine(userPost.CreationTime.ToString(dateTimeFormat));
                 Console.WriteLine(userPost.TextContent);
                 Console.WriteLine();
             }
