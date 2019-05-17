@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-
+//bliver også anvendt som userwall
 namespace SocialNetworkApplication.Model
 {
     public class Feed
@@ -13,7 +13,7 @@ namespace SocialNetworkApplication.Model
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         [BsonElement("Users")]
-        public List<string> Users { get; set; }
+        public string User { get; set; }
         [BsonElement("Circles")]
         public List<string> Circles { get; set; }
         

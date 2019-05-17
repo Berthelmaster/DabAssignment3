@@ -12,6 +12,7 @@ namespace SocialNetworkApplication.Controller
     {
         private readonly UserService _userService;
         private readonly CircleService _circleService;
+        private readonly BlockListService _blockListService;
 
         public UserController(UserService userService, CircleService circleService)
         {

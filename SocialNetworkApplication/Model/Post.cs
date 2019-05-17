@@ -14,14 +14,18 @@ namespace SocialNetworkApplication.Model
         public string Id { get; set; }
 
         [BsonElement("Circle")]
-        public string Circle { get; set; }
+        public Circle Circle { get; set; }
+
+        [BsonElement("TextContent")]
+        public string TextContent { get; set; }
 
         // Core Attributes
         [BsonElement("ImageContent")]
         public string ImageContent { get; set; }
 
-        [BsonElement("TextContent")]
-        public string TextContent { get; set; }
+
+        [BsonElement("Privacy")]
+        public string Privacy { get; set; }
 
         [BsonElement("Author")]
         public string Author { get; set; }
