@@ -57,7 +57,7 @@ namespace SocialNetworkApplication
             
         }
 
-        public static void CreatePost(string OwnerID, string Content, string Circle, string privacy_)
+        public void CreatePost(string OwnerID, string Content, string Circle, string privacy_)
         {
             var post = new Post
             {
@@ -68,15 +68,18 @@ namespace SocialNetworkApplication
                 Privacy = privacy_,
             };
             post.TextContent = Content;
-
-            var newPost = new PostService();
-
-            newPost.Create(post);
+            _postController.Create(post);
         }
 
-        public static void CreateComment(int PostID, string Comment)
+        public void CreateComment(string PostID, string Comment)
         {
+            var commentObj = new Comment
+            {
+                Id = PostID,
+                Text = Comment,
+            };
 
+            _commentController.Create(commentObj);
 
         }
 
