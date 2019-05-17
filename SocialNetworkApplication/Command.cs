@@ -9,6 +9,7 @@ using MongoDB.Driver.Linq;
 using SocialNetworkApplication.Services;
 using SocialNetworkApplication.Controller;
 using SocialNetworkApplication.Model;
+using System.Collections.ObjectModel;
 
 namespace SocialNetworkApplication
 {
@@ -82,6 +83,7 @@ namespace SocialNetworkApplication
             };
             post.TextContent = Content;
             _postController.Create(post);
+            
         }
 
         public void CreateComment(string PostID, string Comment)
