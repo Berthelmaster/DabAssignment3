@@ -11,10 +11,14 @@ namespace SocialNetworkApplication.Controller
     public class FeedController : ControllerBase
     {
         private readonly FeedService _feedService;
+        private readonly UserService _userService;
+        private readonly CircleService _circleService;
 
-        public FeedController(FeedService feedService)
+        public FeedController(FeedService feedService, UserService userService, CircleService circleService)
         {
             _feedService = feedService;
+            _userService = userService;
+            _circleService = circleService;
         }
 
         [HttpGet]

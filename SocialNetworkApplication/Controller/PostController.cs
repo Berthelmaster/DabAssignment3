@@ -11,10 +11,11 @@ namespace SocialNetworkApplication.Controller
     public class PostController : ControllerBase
     {
         private readonly PostService _postService;
-
-        public PostController(PostService postService)
+        private readonly Comment _comment;
+        public PostController(PostService postService, Comment comment)
         {
             _postService = postService;
+            _comment = comment;
         }
 
         [HttpGet]
