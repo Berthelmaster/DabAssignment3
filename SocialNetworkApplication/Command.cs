@@ -31,14 +31,12 @@ namespace SocialNetworkApplication
         {
             Console.WriteLine($"Finding user with id {UserID}");
 
-            _userController.Get(UserID);
+            
+            var userCircles =_circleController.Get().Value.FindAll(c => c.Users.Contains(UserID)).ToList();
+            var allUserPosts = _postController.Get().Value.FindAll(p => p.Author.Equals(UserID));
 
-            var allPosts = _postController.Get();
+            var feed = from 
 
-            foreach (var post in allPosts)
-            {
-                
-            }
 
             var UserObj = new UserService();
 
@@ -57,17 +55,27 @@ namespace SocialNetworkApplication
 
         public void ShowWall(string UserID, string GuestId)
         {
-            if(_postController.Get(UserID)==null)
+            List<Post> userPosts;
+
+            if (UserID.Equals(GuestId))
             {
-                Console.WriteLine("User not found incorrect user ID ");
+                userPosts = _postController.Get().Value.FindAll(p => p.Author.Equals(UserID));
             }
+
             else
             {
-                _postController.
-
-
+                userPosts= _postController.Get().Value.FindAll(p => p.Author.Equals(UserID) && p.Privacy.ToLower().Equals("circle"));
             }
-   
+
+
+            foreach (var userPost in userPosts)
+            {
+                Console.WriteLine(userPost.Author);
+                Console.WriteLine(userPost.CreationTime);
+                Console.WriteLine(userPost.TextContent);
+                Console.WriteLine();
+            }
+
         }
 
         public void CreatePost(string OwnerID, string Content, string Circle, string privacy_)
