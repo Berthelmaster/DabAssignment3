@@ -65,13 +65,13 @@ namespace SocialNetworkApplication
 
                 ImageContent = Content,
 
-                Privacy = privacy_
+                Privacy = privacy_,
             };
-
+            post.TextContent = Content;
 
             var newPost = new PostService();
 
-            newPost.Create;
+            newPost.Create(post);
         }
 
         public static void CreateComment(int PostID, string Comment)
