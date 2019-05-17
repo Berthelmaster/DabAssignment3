@@ -13,15 +13,13 @@ namespace SocialNetworkApplication.Controller
         private readonly CircleService _circleService;
         private readonly User _userService;
         private readonly Post _postService;
+        
 
-        public UserController(User user, Post post)
-        { 
-
-        }
-
-        public CircleController(CircleService circleService)
+        public CircleController(CircleService circleService, User user, Post post)
         {
             _circleService = circleService;
+            _userService = user;
+            _postService = post;
         }
 
         [HttpGet]
