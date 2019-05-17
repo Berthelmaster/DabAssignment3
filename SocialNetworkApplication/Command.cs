@@ -55,14 +55,22 @@ namespace SocialNetworkApplication
             
         }
 
-        public static void ShowWall(int UserID, int GuestId)
+        public void ShowWall(string UserID, string GuestId)
         {
+            if(_postController.Get(UserID)==null)
+            {
+                Console.WriteLine("User not found incorrect user ID ");
+            }
+            else
+            {
+                _postController.
 
 
-            
+            }
+   
         }
 
-        public static void CreatePost(string OwnerID, string Content, string Circle, string privacy_)
+        public void CreatePost(string OwnerID, string Content, string Circle, string privacy_)
         {
             var post = new Post
             {
@@ -70,18 +78,21 @@ namespace SocialNetworkApplication
 
                 ImageContent = Content,
 
-                Privacy = privacy_
+                Privacy = privacy_,
             };
-
-
-            var newPost = new PostService();
-
-            newPost.Create;
+            post.TextContent = Content;
+            _postController.Create(post);
         }
 
-        public static void CreateComment(int PostID, string Comment)
+        public void CreateComment(string PostID, string Comment)
         {
+            var commentObj = new Comment
+            {
+                Id = PostID,
+                Text = Comment,
+            };
 
+            _commentController.Create(commentObj);
 
         }
 
