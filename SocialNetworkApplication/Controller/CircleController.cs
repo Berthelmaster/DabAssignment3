@@ -51,6 +51,8 @@ namespace SocialNetworkApplication.Controller
                 return NotFound();
             }
 
+            circle.Users.Add(userId);
+
             _circleService.Create(circle);
             
             return CreatedAtRoute("GetCircle", new {Id=circle.Id.ToString()}, circle);
