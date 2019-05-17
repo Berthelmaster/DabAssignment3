@@ -34,6 +34,6 @@ namespace SocialNetworkApplication.Model
         public DateTime CreationTime { get; set; }
 
         [BsonElement("Comments")]
-        public List<ObjectId> Comments { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }
