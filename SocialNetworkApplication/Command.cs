@@ -27,13 +27,18 @@ namespace SocialNetworkApplication
             _commentController = new CommentController();
         }
 
-        public static void ShowFeed(string UserID)
+        public void ShowFeed(string UserID)
         {
             Console.WriteLine($"Finding user with id {UserID}");
 
             _userController.Get(UserID);
-            
-            _postController.Get().Where(u => u.Id.Equals()
+
+            var allPosts = _postController.Get();
+
+            foreach (var post in allPosts)
+            {
+                
+            }
 
             var UserObj = new UserService();
 
