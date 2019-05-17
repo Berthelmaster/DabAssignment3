@@ -31,12 +31,14 @@ namespace SocialNetworkApplication
         public void ShowFeed(string UserID)
         {
             Console.WriteLine($"Finding user with id {UserID}");
-
-            
             var userCircles =_circleController.Get().Value.FindAll(c => c.Users.Contains(UserID)).ToList();
             var allUserPosts = _postController.Get().Value.FindAll(p => p.Author.Equals(UserID));
-
+            foreach (var VARIABLE in userCircles.)
+            {
+                
+            }
             var feed = from 
+
 
 
             var UserObj = new UserService();
@@ -65,9 +67,8 @@ namespace SocialNetworkApplication
 
             else
             {
-                userPosts= _postController.Get().Value.FindAll(p => p.Author.Equals(UserID) && p.Privacy.ToLower().Equals("circle"));
+                userPosts= _postController.Get().Value.FindAll(p => p.Author.Equals(UserID) && p.Privacy.ToLower().Equals("public"));
             }
-
 
             foreach (var userPost in userPosts)
             {
@@ -81,30 +82,47 @@ namespace SocialNetworkApplication
 
         public void CreatePost(string OwnerID, string Content, string Circle, string privacy_)
         {
-            var post = new Post
+            var circle =_circleController.Get(Circle).Value;
+
+            var post = new Post()
             {
-                Id = OwnerID,
+                Author = OwnerID,
 
                 ImageContent = Content,
 
+                Circle = circle,
+
                 Privacy = privacy_,
             };
+
             post.TextContent = Content;
+
+            circle.Posts.Add(post);
+
+            _circleController.Update(circle.Id, circle);
+            
             _postController.Create(post);
-            
-            
         }
 
         public void CreateComment(string PostID, string Comment)
         {
+            var post = _postController.Get(PostID).Value;
+
+            if (post == null)
+            {
+                return;
+            }
+
             var commentObj = new Comment
             {
-                Id = PostID,
                 Text = Comment,
             };
 
-            _commentController.Create(commentObj);
+            post.Comments.Add(commentObj);
 
+            _postController.Update(post.Id, post);
+
+            _commentController.Create(commentObj);
         }
 
     }
