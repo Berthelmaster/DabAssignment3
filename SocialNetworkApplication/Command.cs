@@ -50,11 +50,19 @@ namespace SocialNetworkApplication
             
         }
 
-        public static void ShowWall(int UserID, int GuestId)
+        public void ShowWall(string UserID, string GuestId)
         {
+            if(_postController.Get(UserID)==null)
+            {
+                Console.WriteLine("User not found incorrect user ID ");
+            }
+            else
+            {
+                _postController.
 
 
-            
+            }
+   
         }
 
         public void CreatePost(string OwnerID, string Content, string Circle, string privacy_)
