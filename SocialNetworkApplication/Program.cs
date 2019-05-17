@@ -31,35 +31,41 @@ namespace SocialNetworkApplication
                 switch (choice)
                 {
                     case "1":
+                        var obj1 = new Command();
                         Console.WriteLine("Write UserId");
                         var LoggedInUserID = Console.ReadLine();
-                        Command.ShowFeed(LoggedInUserID);
+                        obj1.ShowFeed(LoggedInUserID);
                         break;
 
                     case "2":
+                        var obj2 = new Command();
                         Console.WriteLine("Write UserID");
-                        var UserID = Convert.ToInt32(Console.ReadLine());
+                        var UserID = Console.ReadLine();
                         Console.WriteLine("Write GuestID");
-                        var GuestID = Convert.ToInt32(Console.ReadLine());
-                        Command.ShowWall(UserID, GuestID);
+                        var GuestID = Console.ReadLine();
+                        obj2.ShowWall(UserID, GuestID);
                         break;
 
                     case "3":
+                        var obj3 = new Command();
                         Console.WriteLine("Write OwnerID");
-                        var OwnerID = Convert.ToInt32(Console.ReadLine());
+                        var OwnerID = Console.ReadLine();
                         Console.WriteLine("Write Content");
                         var Content = Console.ReadLine();
                         Console.WriteLine("Write Circle");
                         string Circle = Console.ReadLine();
-                        Command.CreatePost(OwnerID, Content, Circle);
+                        Console.WriteLine("Decide privacy");
+                        string privacy = Console.ReadLine();
+                        obj3.CreatePost(OwnerID, Content, Circle, privacy);
                         break;
 
                     case "4":
+                        var obj4 = new Command();
                         Console.WriteLine("Write PostID");
-                        var PostID = Convert.ToInt32(Console.ReadLine());
+                        var PostID = Console.ReadLine();
                         Console.WriteLine("Write Comment");
                         var Comment = Console.ReadLine();
-                        Command.CreateComment(PostID, Comment);
+                        obj4.CreateComment(PostID, Comment);
                         break;
                 }
 
