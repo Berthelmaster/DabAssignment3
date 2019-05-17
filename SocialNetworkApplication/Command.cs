@@ -7,5 +7,13 @@ namespace SocialNetworkApplication
 {
     public class Command
     {
+        public static void Show_feed()
+        {
+
+
+        }
+
+
+
     }
 }

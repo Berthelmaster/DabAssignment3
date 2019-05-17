@@ -12,6 +12,7 @@ namespace SocialNetworkApplication.Model
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+
         [BsonElement("Name")]
         public string Name { get; set; }
 
@@ -29,12 +30,14 @@ namespace SocialNetworkApplication.Model
 
         [BsonElement("Following")]
         public List<string> Followings { get; set; }
-
-        //Relations?
+        
         [BsonElement("Circles")]
         public List<string> Circles{ get; set; }
 
-        [BsonElement("Feed")]
-        public ObjectId Feed { get; set; }
+        [BsonElement("Posts")]
+        public List<Post> Posts{ get; set; }
+
+        //[BsonElement("Feed")]
+        //public ObjectId Feed { get; set; }
     }
 }

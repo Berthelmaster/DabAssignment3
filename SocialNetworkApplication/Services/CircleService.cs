@@ -49,5 +49,17 @@ namespace SocialNetworkApplication.Services
         {
             _circles.ReplaceOne(c => c.Id.Equals(id), circle);
         }
+
+        public void AddUser(Circle circle, string userId)
+        {
+            circle.Users.Add(userId);
+            Update(circle.Id, circle);
+        }
+
+        public void AddPost(Circle circle, Post post)
+        {
+            circle.Posts.Add(post);
+            Update(circle.Id, circle);
+        }
     }
 }

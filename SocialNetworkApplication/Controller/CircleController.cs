@@ -11,15 +11,15 @@ namespace SocialNetworkApplication.Controller
     public class CircleController : ControllerBase
     {
         private readonly CircleService _circleService;
-        private readonly User _userService;
-        private readonly Post _postService;
+        private readonly UserService _userService;
+        private readonly PostService _postService;
         
 
-        public CircleController(CircleService circleService, User user, Post post)
+        public CircleController(CircleService circleService, UserService userService, PostService postService)
         {
             _circleService = circleService;
-            _userService = user;
-            _postService = post;
+            _userService = userService;
+            _postService = postService;
         }
 
         [HttpGet]
@@ -42,8 +42,15 @@ namespace SocialNetworkApplication.Controller
         }
 
         [HttpPost]
-        public ActionResult<Circle> Create(Circle circle)
+        public ActionResult<Circle> Create(Circle circle, string userId)
         {
+            var user = _userService.Get(userId);
+
+            if(user == null)
+            {
+                return NotFound();
+            }
+
             _circleService.Create(circle);
             
             return CreatedAtRoute("GetCircle", new {Id=circle.Id.ToString()}, circle);
