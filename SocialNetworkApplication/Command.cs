@@ -84,6 +84,7 @@ namespace SocialNetworkApplication
             post.TextContent = Content;
             _postController.Create(post);
             
+            
         }
 
         public void CreateComment(string PostID, string Comment)
