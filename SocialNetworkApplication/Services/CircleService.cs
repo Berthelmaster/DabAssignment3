@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using SocialNetworkApplication.Model;
 
@@ -10,12 +11,34 @@ namespace SocialNetworkApplication.Services
     public class CircleService
     {
         private readonly IMongoCollection<Circle> _circles;
-        public CircleService()
+        /*
+        public DummyData(IConfiguration config)
         {
+            var client = new MongoClient(config.GetConnectionString("DabAssignment3"));
+            var database = client.GetDatabase("DabAssignment3");
+            _user = database.GetCollection<User>("User");
+            _post = database.GetCollection<Post>("Post");
+            _comment = database.GetCollection<Comment>("Comment");
+            _circle = database.GetCollection<Circle>("Circle");
+
+            UserDummy(_user);
+            PostDummy(_post);
+            CommentDummy(_comment);
+            CircleDummy(_circle);
+        }
+        */
+        public CircleService(IConfiguration config)
+        {
+            var client = new MongoClient(config.GetConnectionString("DabAssignment3"));
+            var database = client.GetDatabase("DabAssignment3");
+            _circles = database.GetCollection<Circle>("Circle");
+
+            /*
             var connectionstring = "SocialNetworkPlatform";
             var client = new MongoClient(connectionstring);
             var database = client.GetDatabase(connectionstring);
             _circles = database.GetCollection<Circle>("Circles");
+            */
 
         }
 
