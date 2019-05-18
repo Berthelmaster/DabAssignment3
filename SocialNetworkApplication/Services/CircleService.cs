@@ -48,13 +48,14 @@ namespace SocialNetworkApplication.Services
 
         public Circle Get(string id)
         {
-            return _circles.Find<Circle>(c => c.Id.Equals(id)).FirstOrDefault();
+            return _circles.Find<Circle>(c => c.Id == id).FirstOrDefault();
         }
-
+        
         public List<Circle> Get()
         {
             return _circles.Find<Circle>(circle => true).ToList();
         }
+        
 
         public Circle Create(Circle circle)
         {

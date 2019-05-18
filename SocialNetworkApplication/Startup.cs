@@ -35,7 +35,7 @@ namespace SocialNetworkApplication
             services.AddScoped<Services.PostService>();
             services.AddScoped<Services.CommentService>();
             services.AddScoped<Services.CircleService>(); 
-            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -33,14 +33,15 @@ namespace SocialNetworkApplication.Controller
         }
 
             */
-
+        
         [HttpGet]
         public ActionResult<List<Circle>> Get()
         {
             return _circleService.Get();
         }
+        
 
-        [HttpGet("{id:length(24)}", Name = "GetCircle")]
+        [HttpGet("{id}")]
         public ActionResult<Circle> Get(string Id)
         {
             var circle = _circleService.Get(Id);
