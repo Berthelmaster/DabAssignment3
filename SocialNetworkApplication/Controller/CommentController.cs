@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using SocialNetworkApplication.Model;
 using SocialNetworkApplication.Services;
 
 namespace SocialNetworkApplication.Controller
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class CommentController : ControllerBase
     {
         private readonly CommentService _commentService;
+        public IConfiguration Configuration { get; }
 
         public CommentController(CommentService commentService)
         {
@@ -19,7 +23,7 @@ namespace SocialNetworkApplication.Controller
 
         public CommentController()
         {
-            _commentService = new CommentService();
+            _commentService = new CommentService(Configuration);
         }
 
         [HttpGet]

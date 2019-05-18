@@ -23,8 +23,8 @@ namespace SocialNetworkApplication
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
-            DummyData = new DummyData.DummyData(Configuration);
+            //Configuration = configuration;
+            //DummyData = new DummyData.DummyData(Configuration);
 
 
         }

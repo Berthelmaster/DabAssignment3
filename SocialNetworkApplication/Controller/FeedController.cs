@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using SocialNetworkApplication.Model;
 using SocialNetworkApplication.Services;
 
-namespace SocialNetworkApplication
+namespace SocialNetworkApplication.Controller
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class FeedController : ControllerBase
     {
         private readonly FeedService _feedService;
         private readonly UserService _userService;
         private readonly CircleService _circleService;
+        public IConfiguration Configuration { get; }
 
         public FeedController(FeedService feedService, UserService userService, CircleService circleService)
         {
@@ -24,8 +28,8 @@ namespace SocialNetworkApplication
         public FeedController()
         {
             _feedService = new FeedService();
-            _userService = new UserService();
-            _circleService = new CircleService();
+            _userService = new UserService(Configuration);
+            _circleService = new CircleService(Configuration);
         }
 
         [HttpGet]

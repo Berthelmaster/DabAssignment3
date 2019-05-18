@@ -1,19 +1,21 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using SocialNetworkApplication.Model;
 using SocialNetworkApplication.Services;
 
 
 namespace SocialNetworkApplication.Controller
 {
-    [Route("API/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CircleController : ControllerBase
     {
         private readonly CircleService _circleService;
         private readonly UserService _userService;
         private readonly PostService _postService;
-        
+        public IConfiguration Configuration { get; }
+
 
         public CircleController(CircleService circleService, UserService userService, PostService postService)
         {
@@ -24,9 +26,9 @@ namespace SocialNetworkApplication.Controller
 
         public CircleController()
         {
-            _postService = new PostService();
-            _userService = new UserService();
-            _circleService = new CircleService();
+            _postService = new PostService(Configuration);
+            _userService = new UserService(Configuration);
+            _circleService = new CircleService(Configuration);
         }
 
         [HttpGet]
