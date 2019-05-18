@@ -28,91 +28,82 @@ namespace SocialNetworkApplication.Controller
         [HttpGet("{userid}")]
         public ActionResult<List<Post>> ShowFeed(string UserID)
         {
-            var allCircles = _circleService.Get().ToList();
+            var user = _userService.Get(UserID);
 
             List<Circle> userCircles = new List<Circle>();
 
-            foreach (var circle in allCircles)
+            foreach (var userCircle in user.Circles)
             {
-                foreach (var circleUser in circle.Users)
-                {
-                    if (circleUser.Equals(UserID))
-                    {
-                        userCircles.Add(circle);
-                    }
-                }
+                userCircles.Add(_circleService.Get(userCircle));
             }
 
             // var userCircles = _circleService.Get().FindAll(c => c.Users.Contains(UserID)).ToList();
             
-            List<string> allUserPostsStr = new List<string>();
+
+            List<Post> allUserPosts = new List<Post>();
 
             foreach (var userCircle in userCircles)
             {
                 foreach (var userCirclePost in userCircle.Posts)
                 {
-                    allUserPostsStr.Add(userCirclePost);
+                    allUserPosts.Add(_postService.Get(userCirclePost));
                 }
             }
-
-            List<Post> allUserPosts = new List<Post>();
-
-            foreach (var allUserPost in allUserPostsStr)
-            {
-                allUserPosts.Add(_postService.Get(allUserPost));
-            }
+            
             // Plausible , not sure about this one
             //var allUserPosts = _postService.Get().FindAll(p => p.Circle. userCircles.Contains(p.Circle)).ToList();
 
             return allUserPosts;
         }
 
-        //[HttpGet("{UserID}/{guestId}")]
-        //public ActionResult<List<Post>> ShowWall(string UserID, string GuestId)
-        //{
+        [HttpGet("{UserID}/{guestId}")]
+        public ActionResult<List<Post>> ShowWall(string UserID, string GuestId)
+        {
+            if (UserID.Equals(GuestId))
+            {
+                var userPosts = _postService.Get().FindAll(p => p.Author.Equals(UserID));
 
-        //    if (UserID.Equals(GuestId))
-        //    {
-        //        var userPosts = _postService.Get().FindAll(p => p.Author.Equals(UserID));
+                return userPosts;
+            }
 
-        //        return userPosts;
-        //    }
+            var user = _userService.Get(UserID);
 
+            var guest = _userService.Get(GuestId);
 
-        //    var userCircles = _circleService.Get().FindAll(c => c.Users.Contains(UserID));
+            var userAndGuestCircles = new List<Circle>();
 
-        //    List<Circle> userAndGuestCircles = new List<Circle>();
+            foreach (var userCircle in user.Circles)
+            {
+                foreach (var guestCircle in guest.Circles)
+                {
+                    if (guestCircle.Equals(userCircle))
+                    {
+                        userAndGuestCircles.Add(_circleService.Get(guestCircle));
+                    }
+                }
+            }
+            
 
-        //    foreach (var circle in userCircles)
-        //    {
-        //        foreach (var user in circle.Users)
-        //        {
-        //            if (user.Equals(GuestId))
-        //            {
-        //                userAndGuestCircles.Add(circle);
-        //            }
-        //        }
-        //    }
+            List<Post> userAndGuestsPosts = new List<Post>();
 
-        //    List<Post> userAndGuestsPosts = new List<Post>();
+            foreach (var userAndGuestCircle in userAndGuestCircles)
+            {
+                if (userAndGuestCircle.Posts.Count == 0)
+                {
+                    return NoContent();
+                }
+                foreach (var post in userAndGuestCircle.Posts)
+                {
+                    var userPost = _postService.Get(post);
+                    if (userPost.Author.Equals(UserID))
+                    {
+                        userAndGuestsPosts.Add(userPost);
+                    }
+                }
+            }
 
-        //    foreach (var userAndGuestCircle in userAndGuestCircles)
-        //    {
-        //        if (userAndGuestCircle.Posts.Count == 0)
-        //        {
-        //            return NoContent();
-        //        }
-        //        foreach (var post in userAndGuestCircle.Posts)
-        //        {
-        //            if (post.Author.Equals(UserID))
-        //            {
-        //                userAndGuestsPosts.Add(post);
-        //            }
-        //        }
-        //    }
-
-        //    return userAndGuestsPosts;
-        //}
+            return userAndGuestsPosts;
+        }
 
         /*
         public void CreatePost(string OwnerID, string Content, string Circle, string privacy_)
