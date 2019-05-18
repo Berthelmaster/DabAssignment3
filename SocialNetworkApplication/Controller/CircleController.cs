@@ -6,7 +6,7 @@ using SocialNetworkApplication.Services;
 
 namespace SocialNetworkApplication.Controller
 {
-    [Route("API/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CircleController : ControllerBase
     {

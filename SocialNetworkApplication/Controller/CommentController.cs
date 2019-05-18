@@ -8,6 +8,8 @@ using SocialNetworkApplication.Services;
 
 namespace SocialNetworkApplication.Controller
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class CommentController : ControllerBase
     {
         private readonly CommentService _commentService;

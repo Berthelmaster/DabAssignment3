@@ -8,6 +8,8 @@ using SocialNetworkApplication.Services;
 
 namespace SocialNetworkApplication.Controller
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
