@@ -23,8 +23,8 @@ namespace SocialNetworkApplication
 
         public Startup(IConfiguration configuration)
         {
-            //Configuration = configuration;
-            //DummyData = new DummyData.DummyData(Configuration);
+            Configuration = configuration;
+            DummyData = new DummyData.DummyData(Configuration);
 
 
         }
@@ -45,11 +45,23 @@ namespace SocialNetworkApplication
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
 
-            app.Run(async (context) =>
+            app.UseMvc();
+
+
+
+            /*app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");
-            });
+            }
+            */
+
+
+
         }
     }
 }

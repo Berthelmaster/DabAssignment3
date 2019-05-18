@@ -27,12 +27,15 @@ namespace SocialNetworkApplication.Services
             CircleDummy(_circle);
         }
         */
+
+
         public CircleService(IConfiguration config)
         {
+            
             var client = new MongoClient(config.GetConnectionString("DabAssignment3"));
             var database = client.GetDatabase("DabAssignment3");
             _circles = database.GetCollection<Circle>("Circle");
-
+            
             /*
             var connectionstring = "SocialNetworkPlatform";
             var client = new MongoClient(connectionstring);
@@ -40,7 +43,8 @@ namespace SocialNetworkApplication.Services
             _circles = database.GetCollection<Circle>("Circles");
             */
 
-        }
+        } 
+    
 
         public Circle Get(string id)
         {
@@ -49,7 +53,7 @@ namespace SocialNetworkApplication.Services
 
         public List<Circle> Get()
         {
-            return _circles.Find(Circle => true).ToList();
+            return _circles.Find<Circle>(circle => true).ToList();
         }
 
         public Circle Create(Circle circle)

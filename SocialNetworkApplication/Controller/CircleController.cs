@@ -16,20 +16,23 @@ namespace SocialNetworkApplication.Controller
         private readonly PostService _postService;
         public IConfiguration Configuration { get; }
 
-
+        
         public CircleController(CircleService circleService, UserService userService, PostService postService)
         {
             _circleService = circleService;
             _userService = userService;
             _postService = postService;
         }
-
+        
+        /*
         public CircleController()
         {
             _postService = new PostService(Configuration);
             _userService = new UserService(Configuration);
             _circleService = new CircleService(Configuration);
         }
+
+            */
 
         [HttpGet]
         public ActionResult<List<Circle>> Get()
@@ -57,7 +60,7 @@ namespace SocialNetworkApplication.Controller
             
             return CreatedAtRoute("GetCircle", new {Id=circle.Id.ToString()}, circle);
         }
-
+        /*
         [HttpPut("{Id:length(24)}")]
         public IActionResult CreatePost(Circle circle, Post post)
         {
@@ -71,6 +74,7 @@ namespace SocialNetworkApplication.Controller
 
             return NoContent();
         }
+        */
 
         [HttpPut("{Id:length(24)}")]
         public IActionResult AddUser(Circle circle, string userId)

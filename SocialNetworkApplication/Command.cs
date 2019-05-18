@@ -10,7 +10,7 @@ using SocialNetworkApplication.Services;
 using SocialNetworkApplication.Controller;
 using SocialNetworkApplication.Model;
 using System.Collections.ObjectModel;
-
+/*
 namespace SocialNetworkApplication
 {
     public class Command
@@ -119,3 +119,4 @@ namespace SocialNetworkApplication
 
     }
 }
+*/

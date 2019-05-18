@@ -56,7 +56,7 @@ namespace SocialNetworkApplication.Controller
 
             return CreatedAtRoute("GetPost", new { Id = post.Id.ToString() }, post);
         }
-
+        /*
         [HttpPut("{Id:length(24)}")]
         public IActionResult CreateComment(Post post, Comment comment)
         {
@@ -68,6 +68,7 @@ namespace SocialNetworkApplication.Controller
 
             return NoContent();
         }
+        */
 
         [HttpPut("{Id:length(24)}")]
         public IActionResult Update(string Id, Post circleIn)
