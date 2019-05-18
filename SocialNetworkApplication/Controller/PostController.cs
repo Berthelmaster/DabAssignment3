@@ -23,11 +23,7 @@ namespace SocialNetworkApplication.Controller
             _commentService = commentService;
         }
 
-        public PostController()
-        {
-            _postService = new PostService(Configuration);
-            _commentService = new CommentService(Configuration);
-        }
+        
 
 
         [HttpGet]

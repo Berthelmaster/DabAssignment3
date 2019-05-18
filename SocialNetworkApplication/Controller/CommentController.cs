@@ -21,10 +21,7 @@ namespace SocialNetworkApplication.Controller
             _commentService = commentService;
         }
 
-        public CommentController()
-        {
-            _commentService = new CommentService(Configuration);
-        }
+        
 
         [HttpGet]
         public ActionResult<List<Comment>> Get()

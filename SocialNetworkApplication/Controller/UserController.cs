@@ -26,11 +26,7 @@ namespace SocialNetworkApplication.Controller
             _circleService = circleService;
         }
 
-        public UserController()
-        {
-            _userService = new UserService(Configuration);
-            _circleService = new CircleService(Configuration);
-        }
+        
 
         [HttpGet]
         public ActionResult<List<User>> Get()

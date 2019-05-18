@@ -25,12 +25,7 @@ namespace SocialNetworkApplication.Controller
             _circleService = circleService;
         }
 
-        public FeedController()
-        {
-            _feedService = new FeedService();
-            _userService = new UserService(Configuration);
-            _circleService = new CircleService(Configuration);
-        }
+        
 
         [HttpGet]
         public ActionResult<List<Feed>> Get()

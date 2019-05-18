@@ -8,6 +8,8 @@ using SocialNetworkApplication.Services;
 
 namespace SocialNetworkApplication.Controller
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class CommandController : ControllerBase
     {
         private readonly CircleService _circleService;
@@ -34,7 +36,7 @@ namespace SocialNetworkApplication.Controller
             return allUserPosts;
         }
 
-        [HttpGet("{id}/{guestId}")]
+        [HttpGet("{UserID}/{guestId}")]
         public ActionResult<List<Post>> ShowWall(string UserID, string GuestId)
         {
 
@@ -77,7 +79,7 @@ namespace SocialNetworkApplication.Controller
             return userAndGuestsPosts;
         }
 
-
+        /*
         public void CreatePost(string OwnerID, string Content, string Circle, string privacy_)
         {
             var circle = _circleController.Get(Circle).Value;
@@ -122,5 +124,6 @@ namespace SocialNetworkApplication.Controller
 
             _commentController.Create(commentObj);
         }
+        */
     }
 }
