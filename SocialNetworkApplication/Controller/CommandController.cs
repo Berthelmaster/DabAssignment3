@@ -92,6 +92,32 @@ namespace SocialNetworkApplication.Controller
             return userAndGuestsPosts;
         }
 
+
+        [HttpPost("{UserId}")]
+        public ActionResult CreatePost(string UserId, Post post)
+        {
+            _postService.Create(post);
+            if (post.Circle.Id != null)
+            {
+                var circle = _circleService.Get(post.Circle.Id);
+                if (circle == null) return NoContent();
+                
+                _circleService.Update(post.Id, circle);
+            }
+            else
+            {
+                var user = _userService.Get(UserId);
+                if (post.Circle.Id == null) return NoContent();
+
+                _userService.Update(user.Id, user);
+            }
+
+
+
+            return Ok();
+
+
+        }
         /*
         public void CreatePost(string OwnerID, string Content, string Circle, string privacy_)
         {
