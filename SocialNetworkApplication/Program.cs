@@ -15,7 +15,7 @@ namespace SocialNetworkApplication
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
-
+            /*
             do
             {
                 Console.WriteLine("Hello! You have the following Options: \n\n"
@@ -69,7 +69,7 @@ namespace SocialNetworkApplication
                         break;
                 }
 
-            } while (true);
+            } while (true);*/
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

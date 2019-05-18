@@ -19,11 +19,10 @@ namespace SocialNetworkApplication.DummyData
         private readonly IMongoCollection<Comment> _comment;
         private readonly IMongoCollection<Circle> _circle;
 
-        public DummyData()
+        public DummyData(IConfiguration config)
         {
-            var connectionstring = "SocialNetworkPlatform";
-            var client = new MongoClient(connectionstring);
-            var database = client.GetDatabase(connectionstring);
+            var client = new MongoClient(config.GetConnectionString("DabAssignment3"));
+            var database = client.GetDatabase("DabAssignment3");
             _user = database.GetCollection<User>("User");
             _post = database.GetCollection<Post>("Post");
             _comment = database.GetCollection<Comment>("Comment");
@@ -36,13 +35,15 @@ namespace SocialNetworkApplication.DummyData
         }
 
 
+
+
         static async void UserDummy(IMongoCollection<User> user)
         {
             var users = new List<User>
             {
                 new User
                 {
-                    Id              = "00001",
+                    Id              = "084266996668950330219015",
                     Name            = "Hans",
                     Gender          = "Male",
                     Age             = 26,
@@ -54,7 +55,7 @@ namespace SocialNetworkApplication.DummyData
                 },
                 new User
                 {
-                    Id              = "00002",
+                    Id              = "661991884379144158665822",
                     Name            = "Anne",
                     Gender          = "Female",
                     Age             = 25,
@@ -65,7 +66,7 @@ namespace SocialNetworkApplication.DummyData
                 },
                 new User
                 {
-                    Id              = "00003",
+                    Id              = "627411219309047218021817",
                     Name            = "Mads",
                     Gender          = "male",
                     Age             = 27,
@@ -83,7 +84,7 @@ namespace SocialNetworkApplication.DummyData
             {
                 new Post
                 {
-                    Id              = "00001",
+                    Id              = "084266996668950330219015",
                     Circle          =  new Circle(),
                     TextContent     = "Post 1",
                     ImageContent    = null,
@@ -94,7 +95,7 @@ namespace SocialNetworkApplication.DummyData
                 },
                 new Post
                 {
-                    Id              = "00002",
+                    Id              = "661991884379144158665822",
                     Circle          = new Circle(),
                     TextContent     = "Post 2",
                     ImageContent    = null,
@@ -105,7 +106,7 @@ namespace SocialNetworkApplication.DummyData
                 },
                 new Post
                 {
-                    Id              = "00003",
+                    Id              = "627411219309047218021817",
                     Circle          = new Circle(),
                     TextContent     = "Post 3",
                     ImageContent    = null,
@@ -123,21 +124,21 @@ namespace SocialNetworkApplication.DummyData
             {
                 new Circle
                 {
-                    Id              = "00001",
+                    Id              = "084266996668950330219015",
                     Name            = "Main Circle",
                     Posts           = new List<Post>(),
                     Users           = new List<string> {"00001"}
                 },
                 new Circle
                 {
-                    Id              = "00002",
+                    Id              = "661991884379144158665822",
                     Name            = "Work",
                     Posts           = new List<Post>(),
                     Users            = new List<string> {"00002"}
                 },
                 new Circle
                 {
-                    Id              = "00003",
+                    Id              = "627411219309047218021817",
                     Name            = "School",
                     Posts           = new List<Post>(),
                     Users            = new List<string> {"00003"}
@@ -151,21 +152,21 @@ namespace SocialNetworkApplication.DummyData
             {
                 new Comment
                 {
-                    Id              = "00001",
+                    Id              = "084266996668950330219015",
                     Author          = "00001",
                     Text            = "Nice",
                     CreationTime    = new DateTime(2019, 1, 19)
                 },
                 new Comment
                 {
-                    Id              = "00002",
+                    Id              = "661991884379144158665822",
                     Author          = "00002",
                     Text            = "Cool",
                     CreationTime    = DateTime.MinValue,
                 },
                 new Comment
                 {
-                    Id              = "00003",
+                    Id              = "627411219309047218021817",
                     Author          = "00003",
                     Text            = "Amazing",
                     CreationTime    = new DateTime(1990, 12, 12),
