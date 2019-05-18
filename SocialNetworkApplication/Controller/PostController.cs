@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using SocialNetworkApplication.Model;
 using SocialNetworkApplication.Services;
 
-namespace SocialNetworkApplication
+namespace SocialNetworkApplication.Controller
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class PostController : ControllerBase
     {
         private readonly PostService _postService;
