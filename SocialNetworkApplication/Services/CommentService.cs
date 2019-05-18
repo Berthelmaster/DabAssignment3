@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using SocialNetworkApplication.Model;
 
@@ -10,12 +11,18 @@ namespace SocialNetworkApplication.Services
     public class CommentService
     {
         private readonly IMongoCollection<Comment> _comments;
-        public CommentService()
+        public CommentService(IConfiguration config)
         {
+            var client = new MongoClient(config.GetConnectionString("DabAssignment3"));
+            var database = client.GetDatabase("DabAssignment3");
+            _comments = database.GetCollection<Comment>("Comment");
+
+            /*
             var connectionstring = "SocialNetworkPlatform";
             var client = new MongoClient(connectionstring);
             var database = client.GetDatabase(connectionstring);
-            _comments = database.GetCollection<Comment>("Comments");
+            _circles = database.GetCollection<Circle>("Circles");
+            */
 
         }
 

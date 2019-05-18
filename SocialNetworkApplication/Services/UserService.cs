@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using SocialNetworkApplication.Model;
 
@@ -10,12 +11,19 @@ namespace SocialNetworkApplication.Services
     public class UserService
     {
         private readonly IMongoCollection<User> _users;
-        public UserService()
+        public UserService(IConfiguration config)
         {
+            var client = new MongoClient(config.GetConnectionString("DabAssignment3"));
+            var database = client.GetDatabase("DabAssignment3");
+            _users = database.GetCollection<User>("User");
+
+            /*
             var connectionstring = "SocialNetworkPlatform";
             var client = new MongoClient(connectionstring);
             var database = client.GetDatabase(connectionstring);
-            _users = database.GetCollection<User>("Users");
+            _circles = database.GetCollection<Circle>("Circles");
+            */
+
         }
 
         public User Get(string id)
