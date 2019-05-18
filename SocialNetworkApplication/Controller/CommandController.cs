@@ -15,14 +15,16 @@ namespace SocialNetworkApplication.Controller
         private readonly CircleService _circleService;
         private readonly UserService _userService;
         private readonly PostService _postService;
+        private readonly CommentService _commentService;
         private readonly string dateTimeFormat = "MM/dd/yyyy";
 
 
-        public CommandController(CircleService circleService, UserService userService, PostService postService)
+        public CommandController(CircleService circleService, UserService userService, PostService postService, CommentService commentService)
         {
             _circleService = circleService;
             _userService = userService;
             _postService = postService;
+            _commentService = commentService;
         }
 
         [HttpGet("{userid}")]
@@ -105,6 +107,34 @@ namespace SocialNetworkApplication.Controller
             return userAndGuestsPosts;
         }
 
+
+        [HttpPost("{UserId}")]
+        public ActionResult CreatePost(string UserId, Post post)
+        {
+            _postService.Create(post);
+            if (post.Circle != null)
+            {
+                var circle = _circleService.Get(post.Circle);
+                if (circle == null) return NoContent();
+                
+                _circleService.Update(post.Id, circle);
+            }
+            else
+            {
+                var user = _userService.Get(UserId);
+                if (post.Circle == null) return NoContent();
+
+                _userService.Update(user.Id, user);
+            }
+
+
+
+            return Ok();
+
+
+        }
+
+        
         /*
         public void CreatePost(string OwnerID, string Content, string Circle, string privacy_)
         {

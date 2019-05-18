@@ -14,11 +14,14 @@ namespace SocialNetworkApplication.Controller
     public class CommentController : ControllerBase
     {
         private readonly CommentService _commentService;
+        private readonly PostService _postService;
+
         public IConfiguration Configuration { get; }
 
-        public CommentController(CommentService commentService)
+        public CommentController(CommentService commentService, PostService postService)
         {
             _commentService = commentService;
+            _postService = postService;
         }
 
         
@@ -42,12 +45,21 @@ namespace SocialNetworkApplication.Controller
             return circle;
         }
 
-        [HttpPost]
-        public ActionResult<Comment> Create(Comment circle)
+        [HttpPost("{PostId}")]
+        public ActionResult CreateComment(string PostId, Comment comment)
         {
-            _commentService.Create(circle);
+            var post = _postService.Get(PostId);
 
-            return CreatedAtRoute("GetComment", new { Id = circle.Id.ToString() }, circle);
+
+            if (post == null)
+            {
+                return NoContent();
+            }
+
+            _commentService.Create(comment);
+
+
+            return Ok();
         }
 
         [HttpPut("{Id:length(24)}")]
