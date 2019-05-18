@@ -56,6 +56,10 @@ namespace SocialNetworkApplication.Controller
                 return NoContent();
             }
 
+            post.Comments.Add(comment.Id);
+
+            _postService.Update(PostId,post);
+
             _commentService.Create(comment);
 
 
