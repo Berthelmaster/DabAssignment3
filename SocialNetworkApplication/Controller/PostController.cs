@@ -35,14 +35,14 @@ namespace SocialNetworkApplication.Controller
         [HttpGet("{id:length(24)}", Name = "GetPost")]
         public ActionResult<Post> Get(string Id)
         {
-            var circle = _postService.Get(Id);
+            var post = _postService.Get(Id);
 
-            if (circle == null)
+            if (post == null)
             {
                 return NotFound();
             }
 
-            return circle;
+            return post;
         }
 
         [HttpPost]
@@ -67,7 +67,7 @@ namespace SocialNetworkApplication.Controller
         */
 
         [HttpPut("{Id:length(24)}")]
-        public IActionResult Update(string Id, Post circleIn)
+        public IActionResult Update(string Id, Post postIn)
         {
             var circle = _postService.Get(Id);
 
@@ -76,7 +76,7 @@ namespace SocialNetworkApplication.Controller
                 return NotFound();
             }
 
-            _postService.Update(Id, circleIn);
+            _postService.Update(Id, postIn);
             return NoContent();
         }
 
