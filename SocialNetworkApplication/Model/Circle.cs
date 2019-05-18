@@ -17,7 +17,7 @@ namespace SocialNetworkApplication.Model
         public string Name { get; set; }
 
         [BsonElement("Posts")]
-        public List<Post> Posts { get; set; }
+        public List<string> Posts { get; set; }
 
         [BsonElement("Users")]
         public List<string> Users { get; set; }

@@ -14,7 +14,7 @@ namespace SocialNetworkApplication.Model
         public string Id { get; set; }
 
         [BsonElement("Circle")]
-        public Circle Circle { get; set; }
+        public string Circle { get; set; }
 
         [BsonElement("TextContent")]
         public string TextContent { get; set; }
@@ -34,6 +34,6 @@ namespace SocialNetworkApplication.Model
         public DateTime CreationTime { get; set; }
 
         [BsonElement("Comments")]
-        public List<Comment> Comments { get; set; }
+        public List<string> Comments { get; set; }
     }
 }

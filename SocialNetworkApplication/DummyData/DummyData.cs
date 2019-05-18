@@ -217,46 +217,43 @@ namespace SocialNetworkApplication.DummyData
                 new Post
                 {
                     Id              = "000000000000000000000008",
-                    Circle          =  new Circle()
-                    {
-                        Id = "000000000000000000000011"
-                    },
+                    Circle          = "000000000000000000000011",
                     TextContent     = "Post 1",
                     ImageContent    = null,
                     Privacy         = "Public",
                     Author          = "000000000000000000000001",
                     CreationTime    = DateTime.Today,
-                    Comments        = new List<Comment>()
+                    Comments        = new List<string>()
                     {
-                        new Comment(){Id = "000000000000000000000014"}
+                        "000000000000000000000014"
                     }
                 },
                 new Post
                 {
                     Id              = "000000000000000000000009",
-                    Circle          = new Circle(){Id = "000000000000000000000013"},
+                    Circle          = "000000000000000000000013",
                     TextContent     = "Post 2",
                     ImageContent    = null,
                     Privacy         = "Group",
                     Author          = "000000000000000000000005",
                     CreationTime    = new DateTime(2000, 12, 12),
-                    Comments        = new List<Comment>()
+                    Comments        = new List<string>()
                     {
-                        new Comment(){Id = "000000000000000000000015"}
+                        "000000000000000000000015"
                     }
                 },
                 new Post
                 {
                     Id              = "000000000000000000000010",
-                    Circle          = new Circle(){Id = "000000000000000000000012"},
+                    Circle          = "000000000000000000000012",
                     TextContent     = "Post 3",
                     ImageContent    = null,
                     Privacy         = "Group",
                     Author          = "000000000000000000000006",
                     CreationTime    = new DateTime(1980, 11, 12),
-                    Comments        = new List<Comment>()
+                    Comments        = new List<string>()
                     {
-                        new Comment(){Id = "000000000000000000000016"}
+                        "000000000000000000000016"
                     }
                 }
             };
@@ -270,9 +267,9 @@ namespace SocialNetworkApplication.DummyData
                 {
                     Id              = "000000000000000000000011",
                     Name            = "Hans main Circle",
-                    Posts           = new List<Post>()
+                    Posts           = new List<string>()
                     {
-                        new Post(){Id = "000000000000000000000008"}
+                        "000000000000000000000008"
                     },
                     Users           = new List<string>
                     {
@@ -289,9 +286,9 @@ namespace SocialNetworkApplication.DummyData
                 {
                     Id              = "000000000000000000000012",
                     Name            = "Work",
-                    Posts           = new List<Post>()
+                    Posts           = new List<string>()
                     {
-                        new Post(){Id = "000000000000000000000010"}
+                        "000000000000000000000010"
                     },
                     Users            = new List<string>
                     {
@@ -303,9 +300,9 @@ namespace SocialNetworkApplication.DummyData
                 {
                     Id              = "000000000000000000000013",
                     Name            = "School",
-                    Posts           = new List<Post>()
+                    Posts           = new List<string>()
                     {
-                        new Post(){Id = "000000000000000000000009"}
+                        "000000000000000000000009"
                     },
                     Users            = new List<string>
                     {

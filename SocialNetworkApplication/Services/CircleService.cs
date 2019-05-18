@@ -83,11 +83,6 @@ namespace SocialNetworkApplication.Services
             circle.Users.Add(userId);
             Update(circle.Id, circle);
         }
-
-        public void AddPost(Circle circle, Post post)
-        {
-            circle.Posts.Add(post);
-            Update(circle.Id, circle);
-        }
+        
     }
 }
