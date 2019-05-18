@@ -28,7 +28,7 @@ namespace SocialNetworkApplication.Controller
         public FeedController()
         {
             _feedService = new FeedService();
-            _userService = new UserService();
+            _userService = new UserService(Configuration);
             _circleService = new CircleService(Configuration);
         }
 

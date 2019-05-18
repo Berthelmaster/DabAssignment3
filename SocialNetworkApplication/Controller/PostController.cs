@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using SocialNetworkApplication.Model;
 using SocialNetworkApplication.Services;
 
@@ -14,6 +15,7 @@ namespace SocialNetworkApplication.Controller
     {
         private readonly PostService _postService;
         private readonly CommentService _commentService;
+        public IConfiguration Configuration { get; }
 
         public PostController(PostService postService, CommentService commentService)
         {
@@ -23,8 +25,8 @@ namespace SocialNetworkApplication.Controller
 
         public PostController()
         {
-            _postService = new PostService();
-            _commentService = new CommentService();
+            _postService = new PostService(Configuration);
+            _commentService = new CommentService(Configuration);
         }
 
 

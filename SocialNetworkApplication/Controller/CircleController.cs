@@ -26,8 +26,8 @@ namespace SocialNetworkApplication.Controller
 
         public CircleController()
         {
-            _postService = new PostService();
-            _userService = new UserService();
+            _postService = new PostService(Configuration);
+            _userService = new UserService(Configuration);
             _circleService = new CircleService(Configuration);
         }
 
