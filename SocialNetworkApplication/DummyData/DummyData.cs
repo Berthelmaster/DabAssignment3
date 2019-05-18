@@ -43,37 +43,169 @@ namespace SocialNetworkApplication.DummyData
             {
                 new User
                 {
-                    Id              = "084266996668950330219015",
+                    Id              = "000000000000000000000001",
                     Name            = "Hans",
                     Gender          = "Male",
                     Age             = 26,
-                    BlockedList     = new List<string> {"00001"},
-                    Followings      = new List<string> {"00001"},
-                    Follows         = new List<string> {"00001"},
-                    Circles         = new List<string> {"00001"},
+                    BlockedList     = new List<string>(),
+                    Followings      = new List<string>
+                    {
+                        "000000000000000000000002",
+                        "000000000000000000000003",
+                        "000000000000000000000004",
+                        "000000000000000000000005",
+                        "000000000000000000000006",
+                        "000000000000000000000007"
+                    },
+                    Follows         = new List<string>
+                    {
+                        "000000000000000000000002",
+                        "000000000000000000000003",
+                        "000000000000000000000004",
+                        "000000000000000000000005",
+                        "000000000000000000000006",
+                        "000000000000000000000007"
+                    },
+                    Circles         = new List<string>
+                    {
+                        "000000000000000000000011",
+                        "000000000000000000000013",
+                    },
                    
                 },
                 new User
                 {
-                    Id              = "661991884379144158665822",
+                    Id              = "000000000000000000000002",
                     Name            = "Anne",
                     Gender          = "Female",
                     Age             = 25,
-                    BlockedList     = new List<string> {"00002"},
-                    Followings      = new List<string> {"00002"},
-                    Follows         = new List<string> {"00002"},
-                    Circles         = new List<string> {"00002"}
+                    BlockedList     = new List<string>
+                    {
+                        "000000000000000000000006",
+                        "000000000000000000000007"
+                    },
+                    Followings      = new List<string>
+                    {
+                        "000000000000000000000001",
+                        "000000000000000000000003"
+                    },
+                    Follows         = new List<string>
+                    {
+                        "000000000000000000000001",
+                        "000000000000000000000003",
+                        "000000000000000000000004",
+                        "000000000000000000000005"
+                    },
+                    Circles         = new List<string> { "000000000000000000000011" }
                 },
                 new User
                 {
-                    Id              = "627411219309047218021817",
+                    Id              = "000000000000000000000003",
                     Name            = "Mads",
                     Gender          = "male",
                     Age             = 27,
-                    BlockedList     = new List<string> {"00003"},
-                    Followings      = new List<string> {"00003"},
-                    Follows         = new List<string> {"00003"},
-                    Circles         = new List<string> {"00003"},
+                    BlockedList     = new List<string>
+                    {
+                        "000000000000000000000006",
+                        "000000000000000000000007"
+                    },
+                    Followings      = new List<string>
+                    {
+                        "000000000000000000000001",
+                        "000000000000000000000002"
+                    },
+                    Follows         = new List<string>
+                    {
+                        "000000000000000000000001",
+                        "000000000000000000000002",
+                        "000000000000000000000004"
+                    },
+                    Circles         = new List<string> {"000000000000000000000011"},
+                },
+                new User
+                {
+                    Id              = "000000000000000000000004",
+                    Name            = "Grete",
+                    Gender          = "Female",
+                    Age             = 26,
+                    BlockedList     = new List<string>
+                    {
+                        "000000000000000000000006",
+                    },
+                    Followings      = new List<string> {"000000000000000000000001"},
+                    Follows         = new List<string> {"000000000000000000000001"},
+                    Circles         = new List<string>
+                    {
+                        "000000000000000000000011",
+                        "000000000000000000000013"
+                    },
+
+                },
+                new User
+                {
+                    Id              = "000000000000000000000005",
+                    Name            = "Jessie",
+                    Gender          = "Female",
+                    Age             = 25,
+                    BlockedList     = new List<string> {"000000000000000000000007"},
+                    Followings      = new List<string>
+                    {
+                        "000000000000000000000001",
+                        "000000000000000000000006"
+                    },
+                    Follows         = new List<string> {"000000000000000000000001"},
+                    Circles         = new List<string>
+                    {
+                        "000000000000000000000011",
+                        "000000000000000000000013"
+                    }
+                },
+                new User
+                {
+                    Id              = "000000000000000000000006",
+                    Name            = "Thomas",
+                    Gender          = "male",
+                    Age             = 27,
+                    BlockedList     = new List<string>(),
+                    Followings      = new List<string>
+                    {
+                        "000000000000000000000001",
+                        "000000000000000000000007"
+                    },
+                    Follows         = new List<string>
+                    {
+                        "000000000000000000000001",
+                        "000000000000000000000007",
+                        "000000000000000000000005"
+                    },
+                    Circles         = new List<string>
+                    {
+                        "000000000000000000000011",
+                        "000000000000000000000012",
+                    },
+                },
+                new User
+                {
+                    Id              = "000000000000000000000007",
+                    Name            = "Abdul",
+                    Gender          = "male",
+                    Age             = 27,
+                    BlockedList     = new List<string> {"000000000000000000000002"},
+                    Followings      = new List<string>
+                    {
+                        "000000000000000000000001",
+                        "000000000000000000000006"
+                    },
+                    Follows         = new List<string>
+                    {
+                        "000000000000000000000001",
+                        "000000000000000000000006"
+                    },
+                    Circles         = new List<string>
+                    {
+                        "000000000000000000000011",
+                        "000000000000000000000012"
+                    },
                 }
             };
             await user.InsertManyAsync(users);
@@ -84,36 +216,48 @@ namespace SocialNetworkApplication.DummyData
             {
                 new Post
                 {
-                    Id              = "084266996668950330219015",
-                    Circle          =  new Circle(),
+                    Id              = "000000000000000000000008",
+                    Circle          =  new Circle()
+                    {
+                        Id = "000000000000000000000011"
+                    },
                     TextContent     = "Post 1",
                     ImageContent    = null,
                     Privacy         = "Public",
-                    Author          = "00001",
+                    Author          = "000000000000000000000001",
                     CreationTime    = DateTime.Today,
                     Comments        = new List<Comment>()
+                    {
+                        new Comment(){Id = "000000000000000000000014"}
+                    }
                 },
                 new Post
                 {
-                    Id              = "661991884379144158665822",
-                    Circle          = new Circle(),
+                    Id              = "000000000000000000000009",
+                    Circle          = new Circle(){Id = "000000000000000000000013"},
                     TextContent     = "Post 2",
                     ImageContent    = null,
-                    Privacy         = "Public",
-                    Author          = "00002",
-                    CreationTime    = DateTime.Now,
+                    Privacy         = "Group",
+                    Author          = "000000000000000000000005",
+                    CreationTime    = new DateTime(2000, 12, 12),
                     Comments        = new List<Comment>()
+                    {
+                        new Comment(){Id = "000000000000000000000015"}
+                    }
                 },
                 new Post
                 {
-                    Id              = "627411219309047218021817",
-                    Circle          = new Circle(),
+                    Id              = "000000000000000000000010",
+                    Circle          = new Circle(){Id = "000000000000000000000012"},
                     TextContent     = "Post 3",
                     ImageContent    = null,
-                    Privacy         = "Public",
-                    Author          = "00003",
-                    CreationTime    = DateTime.MaxValue,
+                    Privacy         = "Group",
+                    Author          = "000000000000000000000006",
+                    CreationTime    = new DateTime(1980, 11, 12),
                     Comments        = new List<Comment>()
+                    {
+                        new Comment(){Id = "000000000000000000000016"}
+                    }
                 }
             };
             await post.InsertManyAsync(posts);
@@ -124,24 +268,51 @@ namespace SocialNetworkApplication.DummyData
             {
                 new Circle
                 {
-                    Id              = "084266996668950330219015",
-                    Name            = "Main Circle",
-                    Posts           = new List<Post>(),
-                    Users           = new List<string> {"00001"}
+                    Id              = "000000000000000000000011",
+                    Name            = "Hans main Circle",
+                    Posts           = new List<Post>()
+                    {
+                        new Post(){Id = "000000000000000000000008"}
+                    },
+                    Users           = new List<string>
+                    {
+                        "000000000000000000000001",
+                        "000000000000000000000002",
+                        "000000000000000000000003",
+                        "000000000000000000000004",
+                        "000000000000000000000005",
+                        "000000000000000000000006",
+                        "000000000000000000000007"
+                    }
                 },
                 new Circle
                 {
-                    Id              = "661991884379144158665822",
+                    Id              = "000000000000000000000012",
                     Name            = "Work",
-                    Posts           = new List<Post>(),
-                    Users            = new List<string> {"00002"}
+                    Posts           = new List<Post>()
+                    {
+                        new Post(){Id = "000000000000000000000010"}
+                    },
+                    Users            = new List<string>
+                    {
+                        "000000000000000000000006",
+                        "000000000000000000000007"
+                    }
                 },
                 new Circle
                 {
-                    Id              = "627411219309047218021817",
+                    Id              = "000000000000000000000013",
                     Name            = "School",
-                    Posts           = new List<Post>(),
-                    Users            = new List<string> {"00003"}
+                    Posts           = new List<Post>()
+                    {
+                        new Post(){Id = "000000000000000000000009"}
+                    },
+                    Users            = new List<string>
+                    {
+                        "000000000000000000000001",
+                        "000000000000000000000004",
+                        "000000000000000000000005"
+                    }
                 }
             };
             await circle.InsertManyAsync(circles);
@@ -152,22 +323,22 @@ namespace SocialNetworkApplication.DummyData
             {
                 new Comment
                 {
-                    Id              = "084266996668950330219015",
-                    Author          = "00001",
+                    Id              = "000000000000000000000014",
+                    Author          = "000000000000000000000006",
                     Text            = "Nice",
                     CreationTime    = new DateTime(2019, 1, 19)
                 },
                 new Comment
                 {
-                    Id              = "661991884379144158665822",
-                    Author          = "00002",
+                    Id              = "000000000000000000000015",
+                    Author          = "000000000000000000000004",
                     Text            = "Cool",
                     CreationTime    = DateTime.MinValue,
                 },
                 new Comment
                 {
-                    Id              = "627411219309047218021817",
-                    Author          = "00003",
+                    Id              = "000000000000000000000016",
+                    Author          = "000000000000000000000007",
                     Text            = "Amazing",
                     CreationTime    = new DateTime(1990, 12, 12),
                 }
