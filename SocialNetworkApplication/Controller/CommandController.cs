@@ -25,13 +25,22 @@ namespace SocialNetworkApplication.Controller
             _postService = postService;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{userid}")]
         public ActionResult<List<Post>> ShowFeed(string UserID)
         {
             var userCircles = _circleService.Get().FindAll(c => c.Users.Contains(UserID)).ToList();
 
+            List<Post> allUserPosts = new List<Post>();
+
+            foreach (var userCircle in userCircles)
+            {
+                foreach (var userCirclePost in userCircle.Posts)
+                {
+                    allUserPosts.Add(userCirclePost);
+                }
+            }
             // Plausible , not sure about this one
-            var allUserPosts = _postService.Get().FindAll(p => p.Author.Equals(UserID) || userCircles.Contains(p.Circle));
+            //var allUserPosts = _postService.Get().FindAll(p => p.Circle. userCircles.Contains(p.Circle)).ToList();
 
             return allUserPosts;
         }
@@ -67,6 +76,10 @@ namespace SocialNetworkApplication.Controller
 
             foreach (var userAndGuestCircle in userAndGuestCircles)
             {
+                if (userAndGuestCircle.Posts.Count == 0)
+                {
+                    return NoContent();
+                }
                 foreach (var post in userAndGuestCircle.Posts)
                 {
                     if (post.Author.Equals(UserID))

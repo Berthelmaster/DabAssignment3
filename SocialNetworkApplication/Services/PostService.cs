@@ -15,7 +15,7 @@ namespace SocialNetworkApplication.Services
         {
             var client = new MongoClient(config.GetConnectionString("DabAssignment3"));
             var database = client.GetDatabase("DabAssignment3");
-            _posts = database.GetCollection<Post>("Circle");
+            _posts = database.GetCollection<Post>("Post");
 
             /*
             var connectionstring = "SocialNetworkPlatform";
@@ -28,7 +28,7 @@ namespace SocialNetworkApplication.Services
 
         public List<Post> Get()
         {
-            return _posts.Find(Post => true).ToList();
+            return _posts.Find(post => true).ToList();
         }
 
         public Post Get(string id)
