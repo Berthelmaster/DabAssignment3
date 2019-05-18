@@ -59,27 +59,13 @@ namespace SocialNetworkApplication.Controller
         [HttpPut("{Id:length(24)}")]
         public IActionResult CreatePost(Circle circle, Post post)
         {
-            var p = _postService.Get(post.Id);
-
-            if (p == null)
-            {
-                return NotFound();
-            }
-
-            var c = _circleService.Get(circle.Id);
-
-            if(c == null)
-            {
-                return NotFound();
-            }
-
             post.Circle = circle;
 
             circle.Posts.Add(post);
 
-            _circleService.Update(circle.Id, circle);
+            _circleService.Create(circle);
 
-            _postService.Update(post.Id, post);
+            _postService.Create(post);
 
             return NoContent();
         }

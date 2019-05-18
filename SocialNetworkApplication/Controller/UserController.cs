@@ -57,13 +57,6 @@ namespace SocialNetworkApplication.Controller
         [HttpPost]
         public ActionResult<Circle> CreateCircle(Circle circle, string userId)
         {
-            var c = _circleService.Get(circle.Id);
-
-            if (c == null)
-            {
-                return NotFound();
-            }
-
             var u = _userService.Get(userId);
 
             // Maybe name

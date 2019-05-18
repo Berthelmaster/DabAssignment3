@@ -56,25 +56,11 @@ namespace SocialNetworkApplication
         [HttpPut("{Id:length(24)}")]
         public IActionResult CreateComment(Post post, Comment comment)
         {
-            var c = _commentService.Get(comment.Id);
-
-            if (c == null)
-            {
-                return NotFound();
-            }
-
-            var p = _postService.Get(post.Id);
-
-            if (p == null)
-            {
-                return NotFound();
-            }
-
             post.Comments.Add(comment);
 
             _commentService.Create(comment);
 
-            _postService.Update(post.Id, post);
+            _postService.Create(post);
 
             return NoContent();
         }
