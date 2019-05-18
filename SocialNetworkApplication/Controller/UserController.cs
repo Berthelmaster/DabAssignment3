@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using SocialNetworkApplication.Model;
 using SocialNetworkApplication.Services;
 
@@ -15,7 +16,9 @@ namespace SocialNetworkApplication.Controller
         private readonly UserService _userService;
         private readonly CircleService _circleService;
         //private readonly PostService _postService;
-        
+        public IConfiguration Configuration { get; }
+
+
 
         public UserController(UserService userService, CircleService circleService)
         {
@@ -26,7 +29,7 @@ namespace SocialNetworkApplication.Controller
         public UserController()
         {
             _userService = new UserService();
-            _circleService = new CircleService();
+            _circleService = new CircleService(Configuration);
         }
 
         [HttpGet]
